@@ -43,8 +43,13 @@ export default function SwipePropertyPage() {
     //     // setRightSwipe(false);
     // }, [rightSwipe]);
 
-    async function call() {
 
+    useEffect(() => {
+        loadData();
+    }, []); // Pass an empty array to only call the function once on mount.
+
+    async function loadData() {
+        // Fetch data or perform other loading logic here
     }
 
     useEffect(() => {
@@ -118,7 +123,9 @@ export default function SwipePropertyPage() {
                                     </Stack>
                                     <Stack direction="row" alignItems="center" spacing={3} p={2} useFlexGap>
                                         <Typography>
-                                            description goes here laskdjf;alskdjfasldkjfal;sdkjfa;ls asldkfja;slkdjfas df asdl; fjkasd fasd fas df asdf asd f r egh wert gwe rftg werg wd sfg sdf gs dfg sdf gs dfg sd fg er gsdfgsdf gsd fg sdfgsd fgsd fgsd fgsdfg sdfg
+                                            description goes here laskdjf;alskdjfasldkjfal;sdkjfa;ls asldkfja;slkdjfas
+                                            df asdl; fjkasd fasd fas df asdf asd f r egh wert gwe rftg werg wd sfg sdf
+                                            gs dfg sdf gs dfg sd fg er gsdfgsdf gsd fg sdfgsd fgsd fgsd fgsdfg sdfg
                                         </Typography>
 
                                     </Stack>

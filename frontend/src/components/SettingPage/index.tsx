@@ -88,20 +88,24 @@ export default function SettingPage() {
                                     </Stack>
 
                                     <Box>
-                                        <Button
-                                            variant="contained"
-                                            sx={{
-                                                width: '100%',
-                                                height: 40,
-                                                textTransform: "none",
-                                                borderRadius: 2,
-                                                mb: 1
-                                            }}
-                                            // onClick={}
-                                            disabled={false}
-                                        >
-                                            Swipe property
-                                        </Button>
+                                        <a href={'/swipeuser'}>
+
+                                            <Button
+                                                variant="contained"
+                                                sx={{
+                                                    width: '100%',
+                                                    height: 40,
+                                                    textTransform: "none",
+                                                    borderRadius: 2,
+                                                    mb: 1
+                                                }}
+                                                // onClick={}
+                                                disabled={false}
+                                            >
+                                                Swipe property
+                                            </Button>
+                                        </a>
+
                                         <Button
                                             variant="contained"
                                             sx={{width: '100%', height: 40, textTransform: "none", borderRadius: 2}}
@@ -111,148 +115,6 @@ export default function SettingPage() {
                                             Delete
                                         </Button>
                                     </Box>
-                                </Stack>
-                            </Card>
-                        </Box>
-
-
-                        <Box className={"mb-6"}>
-                            <Card sx={{width: "25em"}}>
-                                <CardMedia
-                                    component="img"
-                                    alt="Yosemite National Park"
-                                    image="yosemite.jpeg"
-                                />
-                                <Stack direction="row" alignItems="center" spacing={3} p={2} useFlexGap>
-                                    <Stack direction="column" spacing={0.5} useFlexGap>
-                                        <Typography>Yosemite National Park, California, USA</Typography>
-                                        <Stack direction="row" spacing={1} useFlexGap>
-                                            {/*<Chip*/}
-                                            {/*    size="small"*/}
-                                            {/*    label={active ? 'Active' : 'Inactive'}*/}
-                                            {/*    color={active ? 'success' : 'default'}*/}
-                                            {/*/>*/}
-                                        </Stack>
-                                    </Stack>
-
-                                    <Box>
-                                        <Button
-                                            variant="contained"
-                                            sx={{
-                                                width: '100%',
-                                                height: 40,
-                                                textTransform: "none",
-                                                borderRadius: 2,
-                                                mb: 1
-                                            }}
-                                            // onClick={}
-                                            disabled={false}
-                                        >
-                                            Swipe property
-                                        </Button>
-                                        <Button
-                                            variant="contained"
-                                            sx={{width: '100%', height: 40, textTransform: "none", borderRadius: 2}}
-                                            // onClick={}
-                                            disabled={false}
-                                        >
-                                            Delete
-                                        </Button>
-                                    </Box>
-                                </Stack>
-                            </Card>
-                        </Box>
-                        <Box className={"mb-6"}>
-                            <Card sx={{width: "25em"}}>
-                                <CardMedia
-                                    component="img"
-                                    alt="Yosemite National Park"
-                                    image="yosemite.jpeg"
-                                />
-                                <Stack direction="row" alignItems="center" spacing={3} p={2} useFlexGap>
-                                    <Stack direction="column" spacing={0.5} useFlexGap>
-                                        <Typography>Yosemite National Park, California, USA</Typography>
-                                        <Stack direction="row" spacing={1} useFlexGap>
-                                            {/*<Chip*/}
-                                            {/*    size="small"*/}
-                                            {/*    label={active ? 'Active' : 'Inactive'}*/}
-                                            {/*    color={active ? 'success' : 'default'}*/}
-                                            {/*/>*/}
-                                        </Stack>
-                                    </Stack>
-
-                                    <Box>
-                                        <Button
-                                            variant="contained"
-                                            sx={{
-                                                width: '100%',
-                                                height: 40,
-                                                textTransform: "none",
-                                                borderRadius: 2,
-                                                mb: 1
-                                            }}
-                                            // onClick={}
-                                            disabled={false}
-                                        >
-                                            Swipe property
-                                        </Button>
-                                        <Button
-                                            variant="contained"
-                                            sx={{width: '100%', height: 40, textTransform: "none", borderRadius: 2}}
-                                            // onClick={}
-                                            disabled={false}
-                                        >
-                                            Delete
-                                        </Button>
-                                    </Box>
-
-                                </Stack>
-                            </Card>
-                        </Box>
-                        <Box className={"mb-6"}>
-                            <Card sx={{width: "25em"}}>
-                                <CardMedia
-                                    component="img"
-                                    alt="Yosemite National Park"
-                                    image="yosemite.jpeg"
-                                />
-                                <Stack direction="row" alignItems="center" spacing={3} p={2} useFlexGap>
-                                    <Stack direction="column" spacing={0.5} useFlexGap>
-                                        <Typography>Yosemite National Park, California, USA</Typography>
-                                        <Stack direction="row" spacing={1} useFlexGap>
-                                            {/*<Chip*/}
-                                            {/*    size="small"*/}
-                                            {/*    label={active ? 'Active' : 'Inactive'}*/}
-                                            {/*    color={active ? 'success' : 'default'}*/}
-                                            {/*/>*/}
-                                        </Stack>
-                                    </Stack>
-
-                                    <Box>
-                                        <Button
-                                            variant="contained"
-                                            sx={{
-                                                width: '100%',
-                                                height: 40,
-                                                textTransform: "none",
-                                                borderRadius: 2,
-                                                mb: 1
-                                            }}
-                                            // onClick={}
-                                            disabled={false}
-                                        >
-                                            Swipe property
-                                        </Button>
-                                        <Button
-                                            variant="contained"
-                                            sx={{width: '100%', height: 40, textTransform: "none", borderRadius: 2}}
-                                            // onClick={}
-                                            disabled={false}
-                                        >
-                                            Delete
-                                        </Button>
-                                    </Box>
-
                                 </Stack>
                             </Card>
                         </Box>

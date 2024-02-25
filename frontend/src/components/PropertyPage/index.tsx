@@ -242,7 +242,7 @@ export default function PropertyPage() {
                                 onClick={() => createProperty()}
                                 disabled={false}
                             >
-                                Login
+                                List property
                                 {/*{<CircularProgress size={15} sx={{ml: 1, color: "#000", opacity: 0.5}}/>}*/}
                             </Button>
                         </FormGroup>
