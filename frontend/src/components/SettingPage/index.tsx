@@ -54,7 +54,7 @@ export default function SettingPage() {
                     <Button
                         variant="contained"
                         sx={{width: '100%', height: 46, textTransform: "none", borderRadius: 2}}
-                        onClick={}
+                        // onClick={}
                         disabled={false}
                     >
                         List property
