@@ -41,27 +41,29 @@ export default function SettingPage() {
                      sx={{padding: '3em', color: 'black'}}>
 
                     {/*<Button className={"animate__animated animate__bounce"}*/}
-                    <Button className={""}
+                    <a href={'/swipeproperty'}>
+                        <Button className={""}
 
+                                variant="contained"
+                                sx={{width: '100%', height: 46, textTransform: "none", borderRadius: 2, mb: '2em'}}
+                                disabled={false}
+                        >
+                            Start matching
+                        </Button>
+                    </a>
+
+
+                    <a href={'/property'}>
+                        <Button
                             variant="contained"
-                            sx={{width: '100%', height: 46, textTransform: "none", borderRadius: 2, mb: '2em'}}
-                        // onClick={}
+                            sx={{width: '100%', height: 46, textTransform: "none", borderRadius: 2}}
                             disabled={false}
-                    >
-                        Start matching
-                    </Button>
-
-                    <Button
-                        variant="contained"
-                        sx={{width: '100%', height: 46, textTransform: "none", borderRadius: 2}}
-                        onClick={}
-                        disabled={false}
-                    >
-                        List property
-                    </Button>
-
-
+                        >
+                            List property
+                        </Button>
+                    </a>
                 </Box>
+
                 <Divider orientation="vertical"/>
 
                 <Box id={"rightPage"} className={'w-4/5 p-28 pt-2'}>
