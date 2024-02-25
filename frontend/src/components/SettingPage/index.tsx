@@ -22,19 +22,50 @@ import {
     Typography,
     Divider
 } from "@mui/material";
+import userService from "../../services/UserService";
+import RentalService from "../../services/RentalService";
 
 
 export default function SettingPage() {
 
+    const [email, setEmail] = useState('')
+
+    useEffect(() => {
+        const storedEmail = sessionStorage.getItem('email');
+        if (storedEmail) {
+            setEmail(storedEmail);
+        }
+    }, []);
+    let rentals
+
+    async function getListing() {
+        try {
+            let userResponse = await userService.GetUserByEmail(email);
+            // DO NOT REMOVE THIS LINE OR SYSTEM IS FUCKED I HAVE NO IDEA WHY BUT YEAH
+            console.log(userResponse);
+            if (userResponse && userResponse.data && userResponse.data._id) {
+                let response = await userService.GetUserById(userResponse.data._id);
+                if (response && response && response.data.rentals) {
+                    rentals = response.data.rentals;
+                    console.log("This is the rentals")
+                    console.log(rentals)
+                }
+            } else {
+                console.error('User response is undefined or missing _id');
+            }
+        } catch (error) {
+            console.error('Error fetching user:', error);
+        }
+
+        // let response = await RentalService.PostRental(formData);
+    }
+
+    useEffect(() => {
+        getListing()
+    }, []);
+
     return (
         <>
-            <head>
-                <link
-                    rel="stylesheet"
-                    href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css"
-                />
-            </head>
-
             <Box id={'main'} className={"flex flex-row w-full h-screen"}>
                 <Box id={"leftSidebar"} className={'w-1/5 border-amber-100'}
                      sx={{padding: '3em', color: 'black'}}>
@@ -68,6 +99,8 @@ export default function SettingPage() {
                 <Box id={"rightPage"} className={'w-4/5 p-28 pt-2'}>
                     <Box className={"flex flex-row flex-wrap p-8"} sx={{justifyContent: 'space-between'}}>
 
+
+                        {/*RENTALS START HERE*/}
                         <Box className={"mb-6"}>
                             <Card sx={{width: "25em"}}>
                                 <CardMedia
@@ -118,6 +151,7 @@ export default function SettingPage() {
                                 </Stack>
                             </Card>
                         </Box>
+                        {/*RENTALS END HERE*/}
 
 
                     </Box>
