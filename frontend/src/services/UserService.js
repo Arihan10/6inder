@@ -1,6 +1,16 @@
 import http from "./http-common";
 
 class UserService {
+    async InitLLM(messages) {
+        try {
+            const response = await http.post("api/v1/users/recommend", messages)
+        
+            return response; 
+        } catch (error) {
+            console.log(error.response); 
+        }
+    }
+
     async SignUp(user) {
         console.log(user)
 
@@ -19,7 +29,7 @@ class UserService {
 
     async GetUsers() {
         try {
-            const response = http.get("api/v1/users"); 
+            const response = await http.get("api/v1/users"); 
             console.log(response); 
 
             return response; 
@@ -30,7 +40,7 @@ class UserService {
 
     async GetUserById(id) {
         try {
-            const response = http.get("api/v1/users/id/"+id); 
+            const response = await http.get("api/v1/users/id/"+id); 
             console.log(response); 
     
             return response; 

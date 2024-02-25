@@ -1,17 +1,36 @@
 import mongodb from "mongodb"
+import axios from "axios"
+
+
 
 const ObjectId = mongodb.ObjectId
 
 let users
 
-const OPENAI_API_KEY = process.env.OPENAI_API_KEY;
+// const OPENAI_API_KEY = process.env.OPENAI_API_KEY;
 
 export default class UsersDAO {
     static async chatLLM(messages) {
         try {
-            const response = await axios.post("https://api.openai.com/v1/chat/completions", { model: "gpt-4", messages: messages }, { headers: { "Authorization": `Bearer ${OPENAI_API_KEY}`, "Content-Type": "application/json", }, }, )
+            // console.log(messages)
 
-            return response.data;
+            const response = await axios.post(
+                "https://api.openai.com/v1/chat/completions",
+                {
+                    model: "gpt-4",
+                    messages: messages // Ensure this is correctly structured
+                },
+                {
+                    headers: {
+                        "Authorization": `Bearer ${process.env.OPENAI_API_KEY}`,
+                        "Content-Type": "application/json",
+                    },
+                }
+            );
+
+            console.log(response.data.choices[0].message)
+
+            return response.data.choices[0].message;
         } catch (error) {
             console.error("Error calling OpenAI API", error); 
         }

@@ -19,7 +19,7 @@ class RentalService {
 
     async GetRentals() {
         try {
-            const response = http.get("api/v1/rentals"); 
+            const response = await http.get("api/v1/rentals"); 
             console.log(response); 
 
             return response; 
@@ -30,7 +30,7 @@ class RentalService {
 
     async GetRentalById(id) {
         try {
-            const response = http.get("api/v1/rentals/id/"+id); 
+            const response = await http.get("api/v1/rentals/id/"+id); 
             console.log(response); 
     
             return response; 

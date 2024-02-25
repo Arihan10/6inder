@@ -4,10 +4,14 @@ import UsersDAO from "../DAO/usersDAO.js"
 
 export default class UsersCtrl {
     static async apiChatLLM(req, res, next) {
-        let messages = req.body.messages
+        // console.log(req.body)
+
+        let messages = req.body
 
         let response = await UsersDAO.chatLLM(messages)
 
+        console.log("THIS"); 
+        console.log(response); 
         res.json(response); 
     }
 
