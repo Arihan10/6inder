@@ -40,7 +40,9 @@ export default function SettingPage() {
                 <Box id={"leftSidebar"} className={'w-1/5 border-amber-100'}
                      sx={{padding: '3em', color: 'black'}}>
 
-                    <Button className={"animate__animated animate__bounce"}
+                    {/*<Button className={"animate__animated animate__bounce"}*/}
+                    <Button className={""}
+
                             variant="contained"
                             sx={{width: '100%', height: 46, textTransform: "none", borderRadius: 2, mb: '2em'}}
                         // onClick={}
@@ -52,7 +54,7 @@ export default function SettingPage() {
                     <Button
                         variant="contained"
                         sx={{width: '100%', height: 46, textTransform: "none", borderRadius: 2}}
-                        // onClick={}
+                        onClick={}
                         disabled={false}
                     >
                         List property
@@ -65,7 +67,7 @@ export default function SettingPage() {
                 <Box id={"rightPage"} className={'w-4/5 p-28 pt-2'}>
                     <Box className={"flex flex-row flex-wrap p-8"} sx={{justifyContent: 'space-between'}}>
 
-                        <Box className={"mb-6 animate__animated animate__fadeOutBottomRight"}>
+                        <Box className={"mb-6"}>
                             <Card sx={{width: "25em"}}>
                                 <CardMedia
                                     component="img"
