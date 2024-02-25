@@ -35,20 +35,22 @@ export default function SettingPage() {
         if (storedEmail) {
             setEmail(storedEmail);
         }
+        getListing()
+
     }, []);
-    let rentals
+    // let rentals
+    const [rental, setRental] = useState<any>([])
 
     async function getListing() {
         try {
-            let userResponse = await userService.GetUserByEmail(email);
-            // DO NOT REMOVE THIS LINE OR SYSTEM IS FUCKED I HAVE NO IDEA WHY BUT YEAH
+            let userResponse = await userService.GetUserByEmail("sofwarearihan@gmail.com");
             console.log(userResponse);
+
             if (userResponse && userResponse.data && userResponse.data._id) {
                 let response = await userService.GetUserById(userResponse.data._id);
                 if (response && response && response.data.rentals) {
-                    rentals = response.data.rentals;
-                    console.log("This is the rentals")
-                    console.log(rentals)
+                    setRental(response.data.rentals);
+                    console.log(rental)
                 }
             } else {
                 console.error('User response is undefined or missing _id');
@@ -59,10 +61,6 @@ export default function SettingPage() {
 
         // let response = await RentalService.PostRental(formData);
     }
-
-    useEffect(() => {
-        getListing()
-    }, []);
 
     return (
         <>
@@ -99,7 +97,61 @@ export default function SettingPage() {
                 <Box id={"rightPage"} className={'w-4/5 p-28 pt-2'}>
                     <Box className={"flex flex-row flex-wrap p-8"} sx={{justifyContent: 'space-between'}}>
 
+                        {rental.map((r) => (
+                            <Box className={"mb-6"}>
+                                <Card sx={{width: "25em"}}>
+                                    <CardMedia
+                                        component="img"
+                                        alt="Yosemite National Park"
+                                        image="yosemite.jpeg"
+                                    />
+                                    <Stack direction="row" alignItems="center" spacing={3} p={2} useFlexGap>
+                                        <Stack direction="column" spacing={0.5} useFlexGap>
+                                            <Typography>{r.address}</Typography>
+                                            <Typography>{r.price}</Typography>
 
+                                            <Typography>{r.description}</Typography>
+                                            <Stack direction="row" spacing={1} useFlexGap>
+                                                {/*<Chip*/}
+                                                {/*    size="small"*/}
+                                                {/*    label={active ? 'Active' : 'Inactive'}*/}
+                                                {/*    color={active ? 'success' : 'default'}*/}
+                                                {/*/>*/}
+                                            </Stack>
+                                        </Stack>
+
+                                        <Box>
+                                            <a href={'/swipeuser'}>
+
+                                                <Button
+                                                    variant="contained"
+                                                    sx={{
+                                                        width: '100%',
+                                                        height: 40,
+                                                        textTransform: "none",
+                                                        borderRadius: 2,
+                                                        mb: 1
+                                                    }}
+                                                    // onClick={}
+                                                    disabled={false}
+                                                >
+                                                    Swipe property
+                                                </Button>
+                                            </a>
+
+                                            <Button
+                                                variant="contained"
+                                                sx={{width: '100%', height: 40, textTransform: "none", borderRadius: 2}}
+                                                // onClick={}
+                                                disabled={false}
+                                            >
+                                                Delete
+                                            </Button>
+                                        </Box>
+                                    </Stack>
+                                </Card>
+                            </Box>
+                        ))}
                         {/*RENTALS START HERE*/}
                         <Box className={"mb-6"}>
                             <Card sx={{width: "25em"}}>
