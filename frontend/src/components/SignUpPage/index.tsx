@@ -27,6 +27,7 @@ import {
 
 
 export default function SignUpPage() {
+    let navigate = useNavigate();
 
     const [renter, setRenter] = useState(false);
     const [formData, setFormData] = useState({
@@ -49,10 +50,9 @@ export default function SignUpPage() {
     };
 
     async function signup() {
-        console.log(formData);
-
         let response = await userService.SignUp(formData);
         sessionStorage.setItem('email', formData.email);
+        return navigate('/setting');
     }
 
     return (
