@@ -39,3 +39,6 @@ class RentalService {
         }
     }
 }
+
+const rentalService = new RentalService()
+export default rentalService
