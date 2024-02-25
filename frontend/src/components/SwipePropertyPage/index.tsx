@@ -43,6 +43,10 @@ export default function SwipePropertyPage() {
     //     // setRightSwipe(false);
     // }, [rightSwipe]);
 
+    async function call() {
+
+    }
+
     useEffect(() => {
         //     -1 = left
         //     0 = no swipe
