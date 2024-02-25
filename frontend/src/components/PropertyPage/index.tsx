@@ -44,7 +44,7 @@ export default function PropertyPage() {
         lookFor: "",
         images: [],
         city: "",
-        country: 0,
+        country: "",
         description: "",
     });
     const handleChange = (event) => {
@@ -60,15 +60,15 @@ export default function PropertyPage() {
 
         try {
             let userResponse = await userService.GetUserByEmail(email);
-
-            if (userResponse && userResponse._id) {
-              formData.owner = userResponse._id;
+            console.log(userResponse);
+            if (userResponse && userResponse.data && userResponse.data._id) {
+                formData.owner = userResponse.data._id;
             } else {
-              console.error('User response is undefined or missing _id');
+                console.error('User response is undefined or missing _id');
             }
-          } catch (error) {
+        } catch (error) {
             console.error('Error fetching user:', error);
-          }
+        }
 
         let response = await RentalService.PostRental(formData);
     }
@@ -98,28 +98,28 @@ export default function PropertyPage() {
 
                         <FormGroup>
                             <Grid container spacing={3}>
-                                <Grid item xs={12} sm={6}>
-                                    <TextField
-                                        required
-                                        id="firstName"
-                                        name="firstName"
-                                        label="First name"
-                                        fullWidth
-                                        autoComplete="given-name"
-                                        variant="standard"
-                                    />
-                                </Grid>
-                                <Grid item xs={12} sm={6}>
-                                    <TextField
-                                        required
-                                        id="lastName"
-                                        name="lastName"
-                                        label="Last name"
-                                        fullWidth
-                                        autoComplete="family-name"
-                                        variant="standard"
-                                    />
-                                </Grid>
+                                {/*<Grid item xs={12} sm={6}>*/}
+                                {/*    <TextField*/}
+                                {/*        required*/}
+                                {/*        id="firstName"*/}
+                                {/*        name="firstName"*/}
+                                {/*        label="First name"*/}
+                                {/*        fullWidth*/}
+                                {/*        autoComplete="given-name"*/}
+                                {/*        variant="standard"*/}
+                                {/*    />*/}
+                                {/*</Grid>*/}
+                                {/*<Grid item xs={12} sm={6}>*/}
+                                {/*    <TextField*/}
+                                {/*        required*/}
+                                {/*        id="lastName"*/}
+                                {/*        name="lastName"*/}
+                                {/*        label="Last name"*/}
+                                {/*        fullWidth*/}
+                                {/*        autoComplete="family-name"*/}
+                                {/*        variant="standard"*/}
+                                {/*    />*/}
+                                {/*</Grid>*/}
 
 
                                 {/*Controller for renter/landlord*/}
@@ -127,14 +127,47 @@ export default function PropertyPage() {
                                 <Grid item xs={12}>
                                     <TextField
                                         required
-                                        id="address1"
-                                        name="address1"
-                                        label="Address line 1"
+                                        id="address"
+                                        name="address"
+                                        label="Address"
                                         fullWidth
                                         autoComplete="shipping address-line1"
                                         variant="standard"
+                                        value={formData.address}
+                                        onChange={handleChange}
                                     />
                                 </Grid>
+
+                                <Grid item xs={12}>
+                                    <TextField
+                                        required
+                                        id="price"
+                                        name="price"
+                                        label="Monthly rent"
+                                        fullWidth
+                                        autoComplete="shipping address-line1"
+                                        variant="standard"
+                                        value={formData.price}
+                                        onChange={handleChange}
+                                    />
+                                </Grid>
+
+                                {/*LOOKING FOR */}
+                                <Grid item xs={12}>
+                                    <TextField
+                                        required
+                                        id="lookFor"
+                                        name="lookFor"
+                                        label="Look for.."
+                                        fullWidth
+                                        autoComplete="shipping address-line1"
+                                        variant="standard"
+                                        value={formData.lookFor}
+                                        onChange={handleChange}
+                                    />
+                                </Grid>
+
+                                {/*IMAGES GOES HERE*/}
 
                                 <Grid item xs={12} sm={6}>
                                     <TextField
@@ -143,30 +176,33 @@ export default function PropertyPage() {
                                         name="city"
                                         label="City"
                                         fullWidth
-                                        autoComplete="shipping address-level2"
                                         variant="standard"
+                                        value={formData.city}
+                                        onChange={handleChange}
                                     />
                                 </Grid>
-                                <Grid item xs={12} sm={6}>
-                                    <TextField
-                                        id="state"
-                                        name="state"
-                                        label="State/Province/Region"
-                                        fullWidth
-                                        variant="standard"
-                                    />
-                                </Grid>
-                                <Grid item xs={12} sm={6}>
-                                    <TextField
-                                        required
-                                        id="zip"
-                                        name="zip"
-                                        label="Zip / Postal code"
-                                        fullWidth
-                                        autoComplete="shipping postal-code"
-                                        variant="standard"
-                                    />
-                                </Grid>
+
+                                {/*<Grid item xs={12} sm={6}>*/}
+                                {/*    <TextField*/}
+                                {/*        id="state"*/}
+                                {/*        name="state"*/}
+                                {/*        label="State/Province/Region"*/}
+                                {/*        fullWidth*/}
+                                {/*        variant="standard"*/}
+                                {/*    />*/}
+                                {/*</Grid>*/}
+
+                                {/*<Grid item xs={12} sm={6}>*/}
+                                {/*    <TextField*/}
+                                {/*        required*/}
+                                {/*        id="zip"*/}
+                                {/*        name="zip"*/}
+                                {/*        label="Zip / Postal code"*/}
+                                {/*        fullWidth*/}
+                                {/*        autoComplete="shipping postal-code"*/}
+                                {/*        variant="standard"*/}
+                                {/*    />*/}
+                                {/*</Grid>*/}
                                 <Grid item xs={12} sm={6}>
                                     <TextField
                                         required
@@ -176,15 +212,39 @@ export default function PropertyPage() {
                                         fullWidth
                                         autoComplete="shipping country"
                                         variant="standard"
+                                        value={formData.country}
+                                        onChange={handleChange}
                                     />
                                 </Grid>
+
                                 <Grid item xs={12}>
-                                    <FormControlLabel
-                                        control={<Checkbox color="secondary" name="saveAddress" value="yes"/>}
-                                        label="Use this address for payment details"
+                                    <TextField
+                                        required
+                                        id="description"
+                                        name="description"
+                                        label="Description"
+                                        fullWidth
+                                        variant="standard"
+                                        value={formData.description}
+                                        onChange={handleChange}
                                     />
                                 </Grid>
+                                {/*<Grid item xs={12}>*/}
+                                {/*    <FormControlLabel*/}
+                                {/*        control={<Checkbox color="secondary" name="saveAddress" value="yes"/>}*/}
+                                {/*        label="Use this address for payment details"*/}
+                                {/*    />*/}
+                                {/*</Grid>*/}
                             </Grid>
+                            <Button
+                                variant="contained"
+                                sx={{width: "100%", height: 46, textTransform: "none", borderRadius: 2}}
+                                onClick={() => createProperty()}
+                                disabled={false}
+                            >
+                                Login
+                                {/*{<CircularProgress size={15} sx={{ml: 1, color: "#000", opacity: 0.5}}/>}*/}
+                            </Button>
                         </FormGroup>
                     </React.Fragment>
                 </Box>
