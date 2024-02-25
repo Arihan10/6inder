@@ -73,5 +73,5 @@ class UserService {
     }
 }
 
-const userService = new userService()
+const userService = new UserService()
 export default userService

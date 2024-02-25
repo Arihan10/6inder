@@ -62,7 +62,7 @@ export default function SwipePropertyPage() {
             </head>
 
             <Box className={'flex flex-row h-screen w-full'}>
-                <Box className={'w-1/3 flex h-screen'} sx={{border: 2}}>
+                <Box className={'w-1/3 flex h-screen'} sx={{}}>
                     <Box className={'m-auto'}>
                         <Button
                             variant="contained"
@@ -76,8 +76,8 @@ export default function SwipePropertyPage() {
                     </Box>
                 </Box>
 
-                <Box className={'w-1/3 flex'} sx={{border: 2}}>
-                    <Box className={'m-auto'}>
+                <Box className={'w-1/3 flex'} sx={{}}>
+                    <Box className={'m-auto rounded-lg'}>
                         <Box className={"mb-6"}>
                             {swipe === 0 ?
                                 <Card sx={{width: "100%"}}>
@@ -89,32 +89,33 @@ export default function SwipePropertyPage() {
                                     <Stack direction="row" alignItems="center" spacing={3} p={2} useFlexGap>
                                         <Stack direction="column" spacing={0.5} useFlexGap>
                                             <Typography>Yosemite National Park, California, USA</Typography>
+                                            <Typography>$100,000</Typography>
+
                                         </Stack>
 
                                         <Box>
-                                            <Button
-                                                variant="contained"
-                                                sx={{
-                                                    width: '100%',
-                                                    height: 40,
-                                                    textTransform: "none",
-                                                    borderRadius: 2,
-                                                    mb: 1
-                                                }}
-                                                // onClick={}
-                                                disabled={false}
-                                            >
-                                                Swipe property
-                                            </Button>
-                                            <Button
-                                                variant="contained"
-                                                sx={{width: '100%', height: 40, textTransform: "none", borderRadius: 2}}
-                                                // onClick={}
-                                                disabled={false}
-                                            >
-                                                Delete
-                                            </Button>
+                                            {/*<Button*/}
+                                            {/*    variant="contained"*/}
+                                            {/*    sx={{*/}
+                                            {/*        width: '100%',*/}
+                                            {/*        height: 40,*/}
+                                            {/*        textTransform: "none",*/}
+                                            {/*        borderRadius: 2,*/}
+                                            {/*        mb: 1*/}
+                                            {/*    }}*/}
+                                            {/*    // onClick={}*/}
+                                            {/*    disabled={false}*/}
+                                            {/*>*/}
+                                            {/*    Swipe property*/}
+                                            {/*</Button>*/}
+
                                         </Box>
+
+                                    </Stack>
+                                    <Stack direction="row" alignItems="center" spacing={3} p={2} useFlexGap>
+                                        <Typography>
+                                            description goes here laskdjf;alskdjfasldkjfal;sdkjfa;ls asldkfja;slkdjfas df asdl; fjkasd fasd fas df asdf asd f r egh wert gwe rftg werg wd sfg sdf gs dfg sdf gs dfg sd fg er gsdfgsdf gsd fg sdfgsd fgsd fgsd fgsdfg sdfg
+                                        </Typography>
 
                                     </Stack>
                                 </Card> :
@@ -161,7 +162,7 @@ export default function SwipePropertyPage() {
                     </Box>
                 </Box>
 
-                <Box className={'w-1/3 flex h-screen'} sx={{border: 2}}>
+                <Box className={'w-1/3 flex h-screen'} sx={{}}>
                     <Box className={'m-auto'}>
                         <Button
                             variant="contained"
