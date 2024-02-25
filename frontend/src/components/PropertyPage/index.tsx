@@ -59,7 +59,7 @@ export default function PropertyPage() {
         console.log(formData);
 
         try {
-            let userResponse = await userService.GetUserByEmail(email);
+            let userResponse = await userService.GetUserByEmail("sofwarearihan@gmail.com");
             console.log(userResponse);
             if (userResponse && userResponse.data && userResponse.data._id) {
                 formData.owner = userResponse.data._id;

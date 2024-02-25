@@ -41,7 +41,7 @@ export default class RentalsCtrl {
             const images = req.body.images; 
             const date = new Date(); 
 
-            const RentalResponse = await RentalsDAO.addApplication(
+            const RentalResponse = await RentalsDAO.addRental(
                 owner,
                 address,
                 city,
