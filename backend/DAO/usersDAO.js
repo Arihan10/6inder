@@ -4,7 +4,19 @@ const ObjectId = mongodb.ObjectId
 
 let users
 
+const OPENAI_API_KEY = process.env.OPENAI_API_KEY;
+
 export default class UsersDAO {
+    static async chatLLM(messages) {
+        try {
+            const response = await axios.post("https://api.openai.com/v1/chat/completions", { model: "gpt-4", messages: messages }, { headers: { "Authorization": `Bearer ${OPENAI_API_KEY}`, "Content-Type": "application/json", }, }, )
+
+            return response.data;
+        } catch (error) {
+            console.error("Error calling OpenAI API", error); 
+        }
+    }
+
     static async injectDB(conn) {
         if (users) return
         
@@ -132,7 +144,7 @@ export default class UsersDAO {
         }
     }
 
-    static async acceptRental(userId, rentalId) {
+    static async acceptRental(userId, rentalId, messages) {
         try {
             const updateResponse = await users.updateOne(
                 {
@@ -142,15 +154,17 @@ export default class UsersDAO {
                     accepted: new ObjectId(rentalId),
                 }}
             )
+
+            const gptResponse = await axios.post("https://api.openai.com/v1/chat/completions", { model: "gpt-4", messages: messages }, { headers: { "Authorization": `Bearer ${OPENAI_API_KEY}`, "Content-Type": "application/json", }, }, )
     
-            return updateResponse; 
+            return gptResponse; 
         } catch (e) {
             console.error(`Unable to update user: ${e}`)
             return { error: e }
         }
     }
 
-    static async rejectRental(userId, rentalId) {
+    static async rejectRental(userId, rentalId, messages) {
         try {
             const updateResponse = await users.updateOne(
                 {
@@ -161,7 +175,9 @@ export default class UsersDAO {
                 }}
             )
     
-            return updateResponse; 
+            const gptResponse = await axios.post("https://api.openai.com/v1/chat/completions", { model: "gpt-4", messages: messages }, { headers: { "Authorization": `Bearer ${OPENAI_API_KEY}`, "Content-Type": "application/json", }, }, )
+    
+            return gptResponse; 
         } catch (e) {
             console.error(`Unable to update user: ${e}`)
             return { error: e }

@@ -15,4 +15,6 @@ router.route("/email/:email").get(UsersCtrl.apiGetUserByEmail)
 router.route("/accept").put(UsersCtrl.apiAcceptRental)
 router.route("/reject").put(UsersCtrl.apiRejectRental)
 
+router.route("/recommend").post(UsersCtrl.apiChatLLM)
+
 export default router

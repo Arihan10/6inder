@@ -3,6 +3,14 @@
 import UsersDAO from "../DAO/usersDAO.js"
 
 export default class UsersCtrl {
+    static async apiChatLLM(req, res, next) {
+        let messages = req.body.messages
+
+        let response = await UsersDAO.chatLLM(messages)
+
+        res.json(response); 
+    }
+
     static async apiGetUsers(req, res, next) {
         let filters = {}
         if (req.query.email) {
@@ -90,17 +98,19 @@ export default class UsersCtrl {
         try {
             const userId = req.body.userId
             const rentalId = req.body.rentalId
+            const messages = req.body.messages
 
             const RentalResponse = await UsersDAO.acceptRental(
                 userId,
                 rentalId,
+                messages,
             )
 
             if (RentalResponse.modifiedCount == 0) {
                 throw new Error("unable to update accepted")
             }
 
-            res.json({ status: "success" })
+            res.json(RentalResponse)
         } catch (e) {
             res.status(500).json({ error: e.message })
         }
@@ -110,17 +120,19 @@ export default class UsersCtrl {
         try {
             const userId = req.body.userId
             const rentalId = req.body.rentalId
+            const messages = req.body.messages
 
             const RentalResponse = await UsersDAO.rejectRental(
                 userId,
                 rentalId,
+                messages
             )
 
             if (RentalResponse.modifiedCount == 0) {
                 throw new Error("unable to update accepted")
             }
 
-            res.json({ status: "success" })
+            res.json(RentalResponse)
         } catch (e) {
             res.status(500).json({ error: e.message })
         }
