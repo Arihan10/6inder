@@ -21,9 +21,57 @@ import {
     TextField,
     Typography
 } from "@mui/material";
+import userService from "../../services/UserService";
+import RentalService from "../../services/RentalService";
+import UserService from "../../services/UserService"
 
 
 export default function PropertyPage() {
+
+    const [email, setEmail] = useState('')
+
+    useEffect(() => {
+        const storedEmail = sessionStorage.getItem('email');
+        if (storedEmail) {
+            setEmail(storedEmail);
+        }
+    }, []);
+
+    const [formData, setFormData] = useState({
+        owner: "",
+        address: "",
+        price: 0,
+        lookFor: "",
+        images: [],
+        city: "",
+        country: 0,
+        description: "",
+    });
+    const handleChange = (event) => {
+        const {id, value} = event.target;
+        setFormData((prevFormData) => ({
+            ...prevFormData,
+            [id]: value,
+        }));
+    };
+
+    async function createProperty() {
+        console.log(formData);
+
+        try {
+            let userResponse = await userService.GetUserByEmail(email);
+
+            if (userResponse && userResponse._id) {
+              formData.owner = userResponse._id;
+            } else {
+              console.error('User response is undefined or missing _id');
+            }
+          } catch (error) {
+            console.error('Error fetching user:', error);
+          }
+
+        let response = await RentalService.PostRental(formData);
+    }
 
 
     return (

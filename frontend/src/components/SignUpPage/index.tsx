@@ -50,7 +50,9 @@ export default function SignUpPage() {
 
     async function signup() {
         console.log(formData);
+
         let response = await userService.SignUp(formData);
+        sessionStorage.setItem('email', formData.email);
     }
 
     return (

@@ -25,7 +25,6 @@ import {
 
 
 export default function SettingPage() {
-    const active = true;
 
     return (
         <>
